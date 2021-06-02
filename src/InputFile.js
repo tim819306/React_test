@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import InputFiles from 'react-input-files';
 import XLSX from 'xlsx';
 import SortableTable from './SortableTable';
-import getExcel from './getExcel';
-import getMetadata from './getMetadata';
+import * as script from './Script.js';
 
 class InputFile extends React.Component{
     render(){
@@ -31,8 +30,8 @@ class InputFile extends React.Component{
                 excel = excel.concat(
                     XLSX.utils.sheet_to_json(workbook.Sheets['DX'])
                 );
-                var data = getExcel(excel);
-                var metadata = getMetadata();
+                var data = script.getExcel(excel);
+                var metadata = script.getMetadate();
                 ReactDOM.render(
                     <div>
                         <InputFiles accept={this.props.accept} onChange={this.onImportExcel}>
