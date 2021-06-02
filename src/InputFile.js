@@ -5,16 +5,8 @@ import XLSX from 'xlsx';
 import SortableTable from './SortableTable';
 import * as script from './Script.js';
 
+
 class InputFile extends React.Component{
-    render(){
-        return (
-            <div>
-                <InputFiles accept={this.props.accept} onChange={this.onImportExcel}>
-                    <button className="btn btn-primary">{this.props.name}</button>
-                </InputFiles>
-            </div>
-        );
-    };
     onImportExcel = files => {
         const fileReader = new FileReader();
         for (let index = 0; index < files.length; index++)
@@ -46,6 +38,15 @@ class InputFile extends React.Component{
             }
         };
         fileReader.readAsBinaryString(files[0]);
+    };
+    render(){
+        return (
+            <div>
+                <InputFiles accept={this.props.accept} onChange={this.onImportExcel}>
+                    <button className="btn btn-primary">{this.props.name}</button>
+                </InputFiles>
+            </div>
+        );
     };
 }
 export default InputFile;
